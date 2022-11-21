@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Page</title>
+    <style>
+      #main {
+        width: 450px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 8% auto 0;
+        text-align: center;
+        margin-top: 180px;
+        border-radius: 13px;
+      }
+
+      #main > h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .input-box {
+        padding: 18px;
+        border-radius: 3px;
+        width: 70%;
+        border: 3px solid whitesmoke;
+      }
+      .input-box:hover {
+        border: 1px solid black;
+      }
+      .pass {
+        color: #21afde;
+        margin-left: -47%;
+        cursor: pointer;
+      }
+
+      .login-btn,
+      .facebook-btn {
+        width: 352px;
+        padding: 15px;
+        border-radius: 3px;
+        color: whitesmoke;
+        border: none;
+        cursor: pointer;
+      }
+      .login-btn {
+        background-color: #1c8adb;
+      }
+      .facebook-btn {
+        background-color: rgb(72, 111, 231);
+      }
+      #para {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        margin-bottom: 50px;
+      }
+      a {
+        text-decoration: none;
+        color: #21afde;
+      }
+      #main_container *{
+        font-family: "Neue Plak UA",Helvetica,Arial,-apple-system,sans-serif;
+        font-size: 13px;
+        
+     }
+    #main{
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .pub{
+      cursor: pointer;
+    }
+    .mak{
+      cursor: pointer;
+    }
+    </style>
+   <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+  </head>
+  <body>
+    <div id="random">
+      <div id="main_container">
+          <div id="container">
+              <div id="logo">
+                  <h1 id="logoo"><a href="./index.html"><img  class="mak" src="https://www.myfitnesspal.com/assets/logo.svg" alt=""></a></h1>
+                  <div>
+                      <p><a href="Login.html">Log In</a></p>
+                      <p><a href="signup.html">Sign Up</a></p>
+                  </div>
+          </div>
+         <!-- nav bar -->
+           <div class="nav">
+              <div class="pub" >
+                  <h3 onclick=window.location.href="./about.html">ABOUT</h3>
+                  <h3 onclick=window.location.href="./food.html">FOOD</h3>
+                  <h3 onclick=window.location.href="./exercise.html">EXERCISE</h3>
+                  <h3 onclick=window.location.href="./apps.html">APPS</h3>
+                  <h3 onclick=window.location.href="./login.html">COMMUNITY</h3>
+                  <h3 onclick=window.location.href="./Blog.html">BLOG</h3>
+                  <h3 onclick=window.location.href="./premium.html">PREMIUM</h3>
+              </div>
+           </div>
+          </div>
+      </div>
+
+
+
+    <div id="main">
+      <h2><b>Member Login</b></h2>
+      <form action="">
+        <input
+          type="email"
+          class="input-box"
+          id="user_email"
+          placeholder="Email Address"
+        /><br /><br />
+
+        <input
+          type="password"
+          class="input-box"
+          id="user_password"
+          placeholder="Password"
+        /><br />
+
+        <p class="pass"><b>Forgot password ?</b></p><br><br>
+        <button type="button" onclick="login()" class="login-btn">
+          <b> LOG IN</b>
+        </button><br><br>
+        <p class="or">Or</p><br>
+        <button type="button" class="facebook-btn">
+          <b>CONTINUE WITH FACEBOOK</b>
+        </button><br><br>
+      </form>
+    </div>
+    <p id="para">
+      Not a member yet? <b><a href="signup.html">Sign up now!</a></b>
+    </p>
+
+
+    <nav>
+      <div>
+         <p>Calorie Counter</p>
+         <p>Blog</p>
+         <p>Terms</p>
+         <p>Privacy</p>
+         <p>Contact Us</p>
+         <p>API</p>
+         <p>Jobs</p>
+         <p>Feedback</p>
+         <p>Community Guidelines</p>
+         <p>Ad Choices</p>
+         <p>Do Not Sell My Personal Information</p>
+         <select name="" id="">
+          <option value="">English</option>
+          <option value="">Deutsh</option>
+          <option value="">Espanol</option>
+         </select>
+      </div>
+      <p style="text-align: center; margin-top: 10px;">© 2022 MyFitnessPal, Inc.</p>
+  </nav>
+  </body>
+
+  <script>
+    function login() {
+      let user_email = document.getElementById("user_email").value; //step1
+      let password = document.getElementById("user_password").value; //step1
+
+      let user_info = JSON.parse(localStorage.getItem("user_info")); //step2  //taking saved data from local storage and check it...true or not! by using if ,else.
+      document.getElementById("user_email").value = ""; //we have to always put this lines after localstorage.
+      document.getElementById("user_password").value = "";
+      if (
+        user_info.user_email == user_email && //step3
+        user_info.password == password
+      ) {
+        alert("Login Successful");
+        localStorage.setItem("login_status", 1); // This shows login Successful    //step5
+        window.location.href = "./index.html"; // and this will take us to home page.
+      } else {
+        alert("Please,Fill Correct details"); //step4
+      }
+    }
+  </script>
+</html>
+
+<script>
+  document.querySelector("#logo h3").addEventListener("click",function(){
+      window.location.href="./index.html"
+  })
+</script>
